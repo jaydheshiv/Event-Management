@@ -1,0 +1,993 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Stunning Eventz - Dark Theme</title>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Sora', sans-serif;
+      background-color: #121212;
+      color: #EAEAEA;
+      transition: background-color 0.3s ease;
+    }
+
+    /* Main background image - further increased size */
+    .bg-pattern {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      opacity: 0.3;
+      pointer-events: none;
+      background: url("https://images.unsplash.com/photo-1736155983520-a0f7d5949d39?q=80&w=2069&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D") center/120% no-repeat; /* Increased from 115% to 120% */
+    }
+
+    .hero {
+      position: relative;
+      width: 100%;
+      height: 780px; /* Increased from 750px to 780px */
+      background: url('INTERNATIONAL%20(2).png') center/110% no-repeat; /* Increased from 105% to 110% */
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    }
+    
+    /* Add more brightness to hero image */
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(255, 255, 255, 0.15); /* Increased from 0.1 to 0.15 */
+      pointer-events: none;
+    }
+
+    /* Hero overlay pattern removed, keeping just the hero itself */
+
+    .nav {
+      position: absolute;
+      top: 20px;
+      left: 80px;
+      display: flex;
+      gap: 54px;
+      font-size: 14px;
+      color: #FFFFFF;
+      z-index: 10;
+    }
+
+    .nav span {
+      cursor: pointer;
+      position: relative;
+      padding: 5px 3px;
+      transition: all 0.3s ease;
+    }
+
+    .nav span::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background-color: #FFD700;
+      transition: width 0.3s ease;
+    }
+    
+    .nav span:hover::after {
+      width: 100%;
+    }
+    
+    .nav span:hover {
+      color: #FFD700;
+    }
+
+    /* Add Vista as name */
+    .nav .company-name {
+      font-weight: 600;
+      font-size: 18px;
+      color: #FFD700;
+      letter-spacing: 1px;
+      margin-right: 20px;
+    }
+    
+    /* Add celebratory crackers effect */
+    .crackers {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 5;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cg fill='%23FFD700' fill-opacity='0.08'%3E%3Cpath d='M50 0L54 10L44 15L50 25L56 15L46 10zM90 45L100 50L90 55L85 65L80 55L90 50zM10 45L0 50L10 55L15 65L20 55L10 50zM50 75L46 85L56 90L50 100L44 90L54 85z'%3E%3C/path%3E%3Cpath d='M85 10L95 15L90 25L80 30L85 20L75 15zM15 10L5 15L10 25L20 30L15 20L25 15zM85 85L95 80L90 70L80 65L85 75L75 80zM15 85L5 80L10 70L20 65L15 75L25 80z'%3E%3C/path%3E%3C/g%3E%3C/svg%3E");
+      opacity: 0.5;
+    }
+
+    .logo {
+      position: absolute;
+      top: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 156px;
+      height: 65px;
+      background: url('Logo%20copyk') center/contain no-repeat;
+      transition: transform 0.3s ease;
+      z-index: 10;
+    }
+
+    .logo:hover {
+      transform: translateX(-50%) scale(1.05);
+    }
+
+    .tagline {
+      position: absolute;
+      bottom: 100px;
+      left: 80px;
+      color: white;
+      font-size: 20px;
+      width: 430px;
+      background-color: rgba(0, 0, 0, 0.5);
+      padding: 15px;
+      border-left: 4px solid #FFD700;
+      backdrop-filter: blur(5px);
+      animation: fadeIn 1.5s ease-out;
+      z-index: 10;
+    }
+
+    @keyframes fadeIn {
+      0% { opacity: 0; transform: translateY(20px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    .stats {
+      position: relative;
+      text-align: center;
+      padding: 80px 20px;
+      background: linear-gradient(to bottom, #121212, #1a1a1a);
+      overflow: hidden;
+      /* Add image background for Our Journey So Far section */
+      background: url('https://images.unsplash.com/photo-1688269910939-4c36b34402b0?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDI5fHx8ZW58MHx8fHx8') center/cover no-repeat;
+      background-attachment: fixed;
+    }
+
+    /* Add a subtle gradient overlay instead to ensure text readability */
+    .stats::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(rgba(18, 18, 18, 0.4), rgba(18, 18, 18, 0.6));
+      z-index: 0;
+    }
+
+    .stats h2 {
+      font-size: 32px;
+      position: relative;
+      display: inline-block;
+      margin-bottom: 30px;
+      color: #FFD700;
+      z-index: 1;
+    }
+
+    .stats h2::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 3px;
+      background-color: #FFD700;
+    }
+
+    .about-text {
+      max-width: 800px;
+      margin: 20px auto;
+      font-weight: 300;
+      font-size: 16px;
+      color: #CCCCCC;
+      line-height: 1.6;
+      position: relative;
+      z-index: 1;
+    }
+    
+    /* Add new style for the description paragraph */
+    .vista-description {
+      max-width: 800px;
+      margin: 0 auto 40px;
+      font-style: italic;
+      color: #FFD700;
+      font-size: 18px;
+      line-height: 1.6;
+      position: relative;
+      z-index: 1;
+      opacity: 0.9;
+    }
+
+    .stat-boxes {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 40px;
+      margin-top: 40px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .stat-box {
+      font-size: 24px;
+      font-weight: bold;
+      color: #FFD700;
+      position: relative;
+      padding: 20px;
+      border-radius: 8px;
+      background-color: rgba(255, 215, 0, 0.1);
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+    }
+
+    .stat-box:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+      background-color: rgba(255, 215, 0, 0.2);
+    }
+
+    .services {
+      position: relative;
+      background: linear-gradient(to bottom, #1E1E1E, #252525);
+      padding: 80px 20px;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    /* Services section background pattern */
+    .services::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-image: url("data:image/svg+xml,%3Csvg width='52' height='26' viewBox='0 0 52 26' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23FFD700' fill-opacity='0.05'%3E%3Cpath d='M10 10c0-2.21-1.79-4-4-4-3.314 0-6-2.686-6-6h2c0 2.21 1.79 4 4 4 3.314 0 6 2.686 6 6 0 2.21 1.79 4 4 4 3.314 0 6 2.686 6 6 0 2.21 1.79 4 4 4v2c-3.314 0-6-2.686-6-6 0-2.21-1.79-4-4-4-3.314 0-6-2.686-6-6zm25.464-1.95l8.486 8.486-1.414 1.414-8.486-8.486 1.414-1.414z' /%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      z-index: 0;
+    }
+
+    .services h2 {
+      font-size: 32px;
+      color: #FFD700;
+      margin-bottom: 40px;
+      position: relative;
+      display: inline-block;
+      z-index: 1;
+    }
+
+    .services h2::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 3px;
+      background-color: #FFD700;
+    }
+
+    .service-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+      gap: 30px;
+      max-width: 1200px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Larger service images */
+    .service {
+      width: 100%;
+      height: 320px; /* Increased from 300px to 320px */
+      padding: 25px;
+      border-radius: 15px;
+      text-align: left;
+      background-size: 115%; /* Increased from 110% to 115% */
+      background-position: center;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+      transition: all 0.5s ease;
+    }
+
+    .service::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to bottom, rgba(42, 42, 42, 0.6), rgba(20, 20, 20, 0.9));
+      z-index: 0;
+      transition: background 0.5s ease;
+    }
+
+    .service:hover::before {
+      background: linear-gradient(to bottom, rgba(42, 42, 42, 0.4), rgba(20, 20, 20, 0.8));
+    }
+
+    .service:hover {
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+    }
+
+    .service > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    .service h4 {
+      margin: 0 0 15px 0;
+      color: #FFD700;
+      font-size: 22px;
+      font-weight: 600;
+      transition: transform 0.3s ease;
+    }
+
+    .service:hover h4 {
+      transform: translateY(-5px);
+    }
+
+    .service p {
+      margin: 0;
+      color: #CCCCCC;
+      font-size: 16px;
+      line-height: 1.6;
+      opacity: 0.9;
+      transform: translateY(5px);
+      transition: all 0.3s ease;
+    }
+
+    .service:hover p {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .carousel {
+      position: relative;
+      padding: 80px 20px;
+      background: linear-gradient(to bottom, #181818, #1F1F1F);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Carousel section background pattern */
+    .carousel::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='88' height='24' viewBox='0 0 88 24'%3E%3Cg fill='%23FFD700' fill-opacity='0.05'%3E%3Cpath d='M10 0l30 15 2 1V2.18A10 10 0 0 0 41.76 0H39.7a8 8 0 0 1 .3 2.18v10.58L14.47 0H10zm31.76 24a10 10 0 0 0-5.29-6.76L4 1 2 0v13.82a10 10 0 0 0 5.53 8.94L10 24h4.47l-6.05-3.02A8 8 0 0 1 4 13.82V3.24l31.58 15.78A8 8 0 0 1 39.7 24h2.06zM78 24l2.47-1.24A10 10 0 0 0 86 13.82V0l-2 1-32.47 16.24A10 10 0 0 0 46.24 24h2.06a8 8 0 0 0 4.12-4.98L84 3.24v10.58a8 8 0 0 1-4.42 7.16L73.53 24H78zm0-24L48 15l-2 1V2.18A10 10 0 0 1 46.24 0h2.06a8 8 0 0 0-.3 2.18v10.58L73.53 0H78z'/%3E%3C/g%3E%3C/svg%3E");
+      z-index: 0;
+    }
+
+    .carousel h2 {
+      font-size: 32px;
+      margin-bottom: 30px;
+      color: #FFD700;
+      position: relative;
+      display: inline-block;
+      z-index: 1;
+    }
+
+    .carousel h2::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 3px;
+      background-color: #FFD700;
+    }
+
+    /* Adjust carousel container to match new size */
+    .carousel-container {
+      position: relative;
+      max-width: 1050px; /* Increased from 1000px to 1050px */
+      margin: 0 auto;
+      overflow: hidden;
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      z-index: 1;
+    }
+
+    .carousel-track {
+      display: flex;
+      transition: transform 0.8s cubic-bezier(0.33, 1, 0.68, 1);
+    }
+
+    /* Larger carousel images */
+    .carousel-image {
+      min-width: 100%;
+      height: 575px; /* Increased from 550px to 575px */
+      object-fit: cover;
+      transition: all 0.8s ease;
+      filter: brightness(0.95); /* Increased brightness from 0.9 to 0.95 */
+    }
+
+    .carousel-image:hover {
+      transform: scale(1.05);
+      filter: brightness(1.1);
+    }
+
+    /* Indicators for carousel */
+    .carousel-indicators {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 20px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .indicator {
+      width: 12px;
+      height: 12px;
+      background-color: #555;
+      border-radius: 50%;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .indicator.active {
+      background-color: #FFD700;
+      transform: scale(1.2);
+    }
+
+    /* Autoplay control button */
+    .autoplay-control {
+      position: absolute;
+      right: 20px;
+      top: 20px;
+      padding: 8px 16px;
+      background-color: rgba(0, 0, 0, 0.6);
+      border: 1px solid #FFD700;
+      color: #FFD700;
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 14px;
+      transition: all 0.3s ease;
+      z-index: 2;
+    }
+
+    .autoplay-control:hover {
+      background-color: rgba(255, 215, 0, 0.2);
+    }
+
+    /* Transition effects */
+    @keyframes fadeSlide {
+      0% { opacity: 0.4; }
+      100% { opacity: 1; }
+    }
+
+    .fade-in {
+      animation: fadeSlide 0.5s ease forwards;
+    }
+    
+    /* Slide transition animations */
+    @keyframes slideFromRight {
+      0% { transform: translateX(100%); opacity: 0; }
+      100% { transform: translateX(0); opacity: 1; }
+    }
+    
+    @keyframes slideFromLeft {
+      0% { transform: translateX(-100%); opacity: 0; }
+      100% { transform: translateX(0); opacity: 1; }
+    }
+    
+    .slide-from-right {
+      animation: slideFromRight 0.8s ease-out forwards;
+    }
+    
+    .slide-from-left {
+      animation: slideFromLeft 0.8s ease-out forwards;
+    }
+
+    /* Progress bar for autoplay */
+    .progress-container {
+      width: 100%;
+      height: 4px;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      background-color: rgba(255, 255, 255, 0.1);
+      z-index: 1;
+    }
+    
+    .progress-bar {
+      height: 100%;
+      width: 0%;
+      background-color: #FFD700;
+      transition: width linear;
+    }
+
+    /* Portfolio modal styles */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.8);
+      z-index: 100;
+      overflow-y: auto;
+    }
+
+    .modal-content {
+      position: relative;
+      width: 90%;
+      max-width: 1000px;
+      margin: 20px auto;
+      background-color: #121212;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+      animation: modalFadeIn 0.4s;
+    }
+
+    @keyframes modalFadeIn {
+      from {opacity: 0; transform: translateY(-50px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+
+    .close-modal {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      font-size: 28px;
+      cursor: pointer;
+      color: #fff;
+      z-index: 101;
+    }
+
+    /* Portfolio styles */
+    .portfolio-header {
+      background: linear-gradient(90deg, #AF780C, #FCD358);
+      padding: 20px 50px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-radius: 10px 10px 0 0;
+    }
+    
+    .portfolio-header h1 { 
+      color: #121212; 
+      font-size: 28px; 
+      font-family: 'Source Sans Pro', sans-serif;
+    }
+    
+    .portfolio-nav a {
+      margin-left: 20px;
+      color: #121212;
+      text-decoration: none;
+      font-weight: bold;
+      font-family: 'Source Sans Pro', sans-serif;
+    }
+    
+    .portfolio-container { 
+      max-width: 1000px; 
+      margin: 0 auto; 
+      padding: 20px;
+      font-family: 'Source Sans Pro', sans-serif;
+    }
+    
+    .portfolio-section { 
+      margin-bottom: 50px; 
+    }
+    
+    .portfolio-h2 {
+      font-size: 24px;
+      color: #FCD358;
+      margin-bottom: 10px;
+      border-bottom: 2px solid #FCD358;
+      display: inline-block;
+      font-family: 'Source Sans Pro', sans-serif;
+    }
+    
+    .portfolio-ul { 
+      list-style: none; 
+      margin-top: 10px;
+      font-family: 'Source Sans Pro', sans-serif;
+    }
+    
+    .portfolio-ul li { 
+      margin-bottom: 10px;
+      font-family: 'Source Sans Pro', sans-serif;
+    }
+    
+    .portfolio-projects article {
+      margin-bottom: 20px;
+      background: #1e1e1e;
+      padding: 20px;
+      border-radius: 10px;
+    }
+    
+    .portfolio-projects h3 { 
+      color: #FFD700;
+      font-family: 'Source Sans Pro', sans-serif;
+    }
+    
+    .portfolio-footer {
+      background: #000;
+      padding: 20px;
+      text-align: center;
+      font-size: 14px;
+      border-radius: 0 0 10px 10px;
+    }
+    
+    .portfolio-contact-links a {
+      color: #FFD700;
+      margin: 0 10px;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <!-- Background pattern - keeping only this main background -->
+  <div class="bg-pattern"></div>
+  
+  <section class="hero">
+    <div class="crackers"></div>
+    <div class="nav">
+      <span class="company-name">Vista</span>
+      <span id="portfolio-btn">Portfolio</span>
+      <span>Packages</span>
+    </div>
+    <div class="logo"></div>
+    <div class="tagline">
+      From cherished personal moments to professional events, we've got you covered.
+    </div>
+  </section>
+
+  <!-- Portfolio Modal -->
+  <div id="portfolio-modal" class="modal">
+    <span class="close-modal">&times;</span>
+    <div class="modal-content">
+      <header class="portfolio-header">
+        <h1>Jay Dheshiv A</h1>
+        <nav class="portfolio-nav">
+          <a href="#portfolio-profile">Profile</a>
+          <a href="#portfolio-education">Education</a>
+          <a href="#portfolio-projects">Projects</a>
+          <a href="#portfolio-skills">Skills</a>
+          <a href="#portfolio-contact">Contact</a>
+        </nav>
+      </header>
+
+      <div class="portfolio-container">
+        <section id="portfolio-profile" class="portfolio-section">
+          <h2 class="portfolio-h2">Profile</h2>
+          <p>Software Engineering Master's student eager to apply strong problem-solving skills and creativity to develop reliable and user-friendly software solutions. Passionate about building efficient applications that enhance productivity and improve everyday experiences.</p>
+        </section>
+
+        <section id="portfolio-education" class="portfolio-section">
+          <h2 class="portfolio-h2">Education</h2>
+          <ul class="portfolio-ul">
+            <li><strong>Coimbatore Institute of Technology</strong> (2022 – present)<br />MSc (Integrated) Decision and Computing Sciences – CGPA: 7.02</li>
+            <li><strong>CEOA Matriculation Higher Secondary School, Madurai</strong> (2021 – 2022)<br />Higher Secondary – 81%</li>
+          </ul>
+        </section>
+
+        <section id="portfolio-projects" class="portfolio-section portfolio-projects">
+          <h2 class="portfolio-h2">Projects</h2>
+          <article>
+            <h3>Snap & Shop: AI Fashion Finder</h3>
+            <p>Built with React Native (Expo), Firebase, and Location-based Services. Users can capture outfit images and search similar styles online, integrated with real-time data sync and store suggestions.</p>
+          </article>
+          <article>
+            <h3>SwapLend: Product Lending and Swapping Platform</h3>
+            <p>Developed using Flask, SQLite, HTML/CSS, JavaScript. Facilitates community-based product lending/swapping with a user-friendly interface and seamless transaction tracking.</p>
+          </article>
+          <article>
+            <h3>Shoppero: E-commerce Website</h3>
+            <p>Created with the MEAN Stack (MongoDB, Express, Angular, Node.js). Features include secure checkout, cart/wishlist, and admin dashboard for order and inventory management.</p>
+          </article>
+        </section>
+
+        <section id="portfolio-skills" class="portfolio-section">
+          <h2 class="portfolio-h2">Technical Skills</h2>
+          <ul class="portfolio-ul">
+            <li><strong>Languages:</strong> Python, HTML, CSS, JavaScript, SQL</li>
+            <li><strong>Frameworks:</strong> Flask, MEAN Stack, React Native (Expo)</li>
+            <li><strong>Database/Cloud:</strong> Firebase, SQLite</li>
+            <li><strong>Tools:</strong> VS Code, Google Colab, MS Excel, Power BI, GitHub</li>
+            <li><strong>Soft Skills:</strong> Leadership, Adaptability, Critical Thinking</li>
+          </ul>
+        </section>
+
+        <section id="portfolio-contact" class="portfolio-section">
+          <h2 class="portfolio-h2">Contact</h2>
+          <p>Phone: <a href="tel:6383109056" class="portfolio-contact-links">6383109056</a></p>
+          <p>Email: <a href="mailto:jaydheshiv01@gmail.com" class="portfolio-contact-links">jaydheshiv01@gmail.com</a></p>
+          <p>
+            <a href="https://www.linkedin.com/in/jay-dheshiv-a-a023652ab" class="portfolio-contact-links" target="_blank">LinkedIn</a> |
+            <a href="https://github.com/jaydheshiv" class="portfolio-contact-links" target="_blank">GitHub</a>
+          </p>
+        </section>
+      </div>
+
+      <footer class="portfolio-footer">
+        &copy; 2024 Jay Dheshiv A. All rights reserved.
+      </footer>
+    </div>
+  </div>
+
+  <section class="stats">
+    <h2>Our Journey So Far</h2>
+    <p class="vista-description">
+      Implies vision, outlook, and beautiful scenes—capturing the experience of a well-planned event
+    </p>
+    <p class="about-text">
+      At Stunning Eventz, we take pride in our legacy of creating unforgettable memories through exceptional photography and event services.
+    </p>
+    <div class="stat-boxes">
+      <div class="stat-box">1,000+ Events Covered</div>
+      <div class="stat-box">500+ Happy Clients</div>
+      <div class="stat-box">10+ Years of Experience</div>
+      <div class="stat-box">40+ Professionals</div>
+    </div>
+  </section>
+
+  <section class="services">
+    <h2>Our Services</h2>
+    <div class="service-grid">
+      <div class="service" style="background-image: url('https://images.unsplash.com/photo-1629807096975-e08299e2d77d?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8ZnJlZSUyMFdlZGRpbmclMjBQaG90b2dyYXBoeSUyMCUyNiUyMFZpZGVvZ3JhcGh5fGVufDB8fDB8fHww');">
+        <h4>Wedding Photography & Videography</h4>
+        <p>Capturing your special day with timeless elegance and creativity.</p>
+      </div>
+      <div class="service" style="background-image: url('https://images.unsplash.com/photo-1517588487680-fc59cb1a55cf?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8ZnJlZSUyME5ldyUyMEJvcm4lMjBCYWJ5JTIwU2hvb3RzJTIwJTI2JTIwVG9kZGxlcnMlMjBwaG90b2dyYXBoeXxlbnwwfHwwfHx8MA%3D%3D');">
+        <h4>New Born Baby Shoots & Toddlers</h4>
+        <p>Preserve the innocence and charm of your little ones forever.</p>
+      </div>
+      <div class="service" style="background-image: url('https://media.istockphoto.com/id/507030272/photo/traditional-indian-family-ear-piercing-ceremony.jpg?s=1024x1024&w=is&k=20&c=T2CEySEC0swj1YriNlpKLPAV3zYtPxQX_c9vICnMyO4=');">
+        <h4>Ear Piercing Ceremony</h4>
+        <p>Traditional moments crafted with cultural beauty and warmth.</p>
+      </div>
+      <div class="service" style="background-image: url('https://media.istockphoto.com/id/2119243529/photo/bride-is-seated-beneath-phoolon-ki-chadar-during-her-haldi-ceremony-as-a-part-of-the-ritual.webp?a=1&s=612x612&w=0&k=20&c=Xx7HVJiyDmUgyZ7M3cmsIV7VGlcpKd4dv8BMUzgJJAQ=');">
+        <h4>Puberty Ceremony</h4>
+        <p>Gracefully capturing the transition into adulthood.</p>
+      </div>
+      <div class="service" style="background-image: url('https://media.istockphoto.com/id/1148575768/photo/new-home-ribbon-cutting-ceremony.jpg?s=2048x2048&w=is&k=20&c=cv5NFQeVcNRL66St7tU9JSFd7gVuQq5WgNosNIheUKw=');">
+        <h4>Housewarming Ceremony</h4>
+        <p>New beginnings celebrated with vibrant memories.</p>
+      </div>
+      <div class="service" style="background-image: url('https://plus.unsplash.com/premium_photo-1661396932243-bc42e9f0a204?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDI3fHx8ZW58MHx8fHx8');">
+        <h4>Corporate Photography</h4>
+        <p>Professional moments and milestones recorded with class.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="carousel">
+    <h2>Wedding Moments Captured</h2>
+    <button class="autoplay-control" id="autoplayControl">Pause</button>
+    <div class="carousel-container">
+      <div class="carousel-track" id="carouselTrack">
+        <img class="carousel-image" src="https://images.unsplash.com/photo-1573676048035-9c2a72b6a12a?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Wedding 1" />
+        <img class="carousel-image" src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=2069&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Wedding 2" />
+        <img class="carousel-image" src="https://plus.unsplash.com/premium_photo-1664530452477-b57c65f58c6e?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDIwfHx8ZW58MHx8fHx8" alt="Wedding 3" />
+        <img class="carousel-image" src="https://plus.unsplash.com/premium_photo-1726797794467-f55987da1353?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Wedding 4" />
+        <img class="carousel-image" src="https://plus.unsplash.com/premium_photo-1675851211763-8501788acba9?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Wedding 5" />
+      </div>
+      <div class="progress-container">
+        <div class="progress-bar" id="progressBar"></div>
+      </div>
+    </div>
+    <div class="carousel-indicators" id="carouselIndicators">
+      <!-- Indicators will be added by JavaScript -->
+    </div>
+  </section>
+
+  <script>
+    let currentSlide = 0;
+    const track = document.getElementById('carouselTrack');
+    const slides = track.children;
+    const totalSlides = slides.length;
+    const progressBar = document.getElementById('progressBar');
+    const autoplayControl = document.getElementById('autoplayControl');
+    
+    // Autoplay settings
+    const slideInterval = 4000; // 4 seconds per slide
+    let autoplayInterval;
+    let isAutoplayRunning = true;
+    
+    // Create indicators
+    const indicators = document.getElementById('carouselIndicators');
+    for (let i = 0; i < totalSlides; i++) {
+      const indicator = document.createElement('div');
+      indicator.classList.add('indicator');
+      if (i === 0) indicator.classList.add('active');
+      indicator.onclick = function() { goToSlide(i); };
+      indicators.appendChild(indicator);
+    }
+
+    function updateIndicators() {
+      const indicatorDots = document.querySelectorAll('.indicator');
+      indicatorDots.forEach((dot, index) => {
+        if (index === currentSlide) {
+          dot.classList.add('active');
+        } else {
+          dot.classList.remove('active');
+        }
+      });
+    }
+
+    function goToSlide(index) {
+      // Reset progress bar for manual navigation
+      resetProgressBar();
+      
+      currentSlide = index;
+      updateSlide();
+    }
+
+    function moveSlide(direction) {
+      // Reset progress bar for manual navigation
+      resetProgressBar();
+      
+      currentSlide += direction;
+      if (currentSlide < 0) currentSlide = totalSlides - 1;
+      if (currentSlide >= totalSlides) currentSlide = 0;
+      updateSlide();
+    }
+
+    function updateSlide() {
+      const slideWidth = track.clientWidth;
+      track.style.transform = `translateX(-${currentSlide * slideWidth}px)`;
+      
+      // Apply fade-in animation to current slide
+      Array.from(slides).forEach((slide, index) => {
+        slide.classList.remove('fade-in', 'slide-from-left', 'slide-from-right');
+        if (index === currentSlide) {
+          setTimeout(() => {
+            // Apply random transition effect
+            const effects = ['fade-in', 'slide-from-left', 'slide-from-right'];
+            const randomEffect = effects[Math.floor(Math.random() * effects.length)];
+            slide.classList.add(randomEffect);
+          }, 50);
+        }
+      });
+      
+      updateIndicators();
+    }
+    
+    // Progress bar functions
+    function startProgressBar() {
+      resetProgressBar();
+      progressBar.style.transition = `width ${slideInterval}ms linear`;
+      progressBar.style.width = '100%';
+    }
+    
+    function resetProgressBar() {
+      progressBar.style.transition = 'none';
+      progressBar.style.width = '0%';
+      
+      // Force a reflow to ensure the transition restart
+      void progressBar.offsetWidth;
+    }
+
+    // Autoplay controls
+    function toggleAutoplay() {
+      if (isAutoplayRunning) {
+        stopAutoplay();
+        autoplayControl.textContent = 'Play';
+      } else {
+        startAutoplay();
+        autoplayControl.textContent = 'Pause';
+      }
+      isAutoplayRunning = !isAutoplayRunning;
+    }
+    
+    function startAutoplay() {
+      startProgressBar();
+      autoplayInterval = setInterval(() => {
+        moveSlide(1);
+        startProgressBar();
+      }, slideInterval);
+    }
+    
+    function stopAutoplay() {
+      clearInterval(autoplayInterval);
+      resetProgressBar();
+    }
+    
+    autoplayControl.addEventListener('click', toggleAutoplay);
+
+    // Initialize the first slide with animation
+    setTimeout(() => {
+      slides[0].classList.add('fade-in');
+      // Start autoplay
+      startAutoplay();
+    }, 100);
+
+    // Add touch swipe support
+    let touchStartX = 0;
+    let touchEndX = 0;
+    
+    track.addEventListener('touchstart', e => {
+      touchStartX = e.changedTouches[0].screenX;
+      // Pause autoplay temporarily during interaction
+      stopAutoplay();
+    });
+    
+    track.addEventListener('touchend', e => {
+      touchEndX = e.changedTouches[0].screenX;
+      handleSwipe();
+      // Resume autoplay after interaction if it was running
+      if (isAutoplayRunning) {
+        startAutoplay();
+      }
+    });
+    
+    function handleSwipe() {
+      if (touchEndX < touchStartX) {
+        moveSlide(1); // Swipe left, next slide
+      } else if (touchEndX > touchStartX) {
+        moveSlide(-1); // Swipe right, previous slide
+      }
+    }
+    
+    // Pause autoplay when hovering over carousel
+    const carouselContainer = document.querySelector('.carousel-container');
+    carouselContainer.addEventListener('mouseenter', () => {
+      if (isAutoplayRunning) stopAutoplay();
+    });
+    
+    carouselContainer.addEventListener('mouseleave', () => {
+      if (isAutoplayRunning) startAutoplay();
+    });
+    
+    // Responsive handling - update slide position when window resizes
+    window.addEventListener('resize', () => {
+      updateSlide();
+    });
+
+    // Portfolio Modal Functionality
+    const portfolioBtn = document.getElementById('portfolio-btn');
+    const portfolioModal = document.getElementById('portfolio-modal');
+    const closeModal = document.querySelector('.close-modal');
+
+    // Open modal when Portfolio button is clicked
+    portfolioBtn.addEventListener('click', () => {
+      portfolioModal.style.display = 'block';
+      document.body.style.overflow = 'hidden'; // Prevent scrolling of the main page
+      // Pause carousel autoplay when modal is open
+      if (isAutoplayRunning) stopAutoplay();
+    });
+
+    // Close modal when X is clicked
+    closeModal.addEventListener('click', () => {
+      portfolioModal.style.display = 'none';
+      document.body.style.overflow = ''; // Enable scrolling again
+      // Resume carousel autoplay when modal is closed
+      if (isAutoplayRunning) startAutoplay();
+    });
+
+    // Close modal when clicking outside of it
+    window.addEventListener('click', (e) => {
+      if (e.target === portfolioModal) {
+        portfolioModal.style.display = 'none';
+        document.body.style.overflow = '';
+        if (isAutoplayRunning) startAutoplay();
+      }
+    });
+  </script>
+</body>
+</html>
